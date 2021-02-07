@@ -19,8 +19,14 @@
 
 .calculator__display {
   background-color: black;
+  color: white;
+  font-size: 7rem;
   grid-column: span 4;
   height: 10rem;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .calculator__key {
