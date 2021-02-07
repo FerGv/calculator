@@ -1,0 +1,67 @@
+:root {
+  --key-padding: 2rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 500px;
+  margin: auto;
+}
+
+.calculator__display {
+  background-color: black;
+  grid-column: span 4;
+  height: 10rem;
+}
+
+.calculator__key {
+  cursor: pointer;
+  font-size: 2rem;
+  padding: var(--key-padding);
+  text-align: center;
+}
+
+.calculator__number {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.calculator__number:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.calculator__symbol {
+  background-color: rgba(246, 138, 138, 0.5);
+}
+
+.calculator__symbol:hover {
+  background-color: rgba(246, 138, 138, 0.8);
+}
+
+.calculator__symbol--sum {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.calculator__symbol--subtract {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+.calculator__symbol--multiplication {
+  grid-column: 4;
+  grid-row: 4;
+}
+
+.calculator__symbol--equal {
+  grid-column: span 2;
+  background-color: rgba(255, 38, 0, 0.8);
+}
