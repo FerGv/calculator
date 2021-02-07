@@ -1,0 +1,3 @@
+- Add button to clear display.
+- Add button for dot symbol.
+- Change styles.
