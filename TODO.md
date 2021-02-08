@@ -1,3 +1,5 @@
 - Add button to clear display.
 - Add button for dot symbol.
 - Change styles.
+- Attach events to keyboard
+- Fix decimals in result
