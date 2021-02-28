@@ -5,6 +5,7 @@ const keys = document.querySelectorAll('.calculator__key');
 const REGEX_NUMBERS = /\d/;
 const REGEX_SYMBOLS = /[\+\-\*\/]/;
 const REGEX_INVALID_CONTENT = /[^\.\+\-\*\/\d]/;
+const REGEX_INVALID_CONTENT_KEYBOARD = /[^=\.\+\-\*\/\dBackspace]/;
 
 // Flag to validate if a point can be written.
 let allowPoint = true;
@@ -65,6 +66,7 @@ function handleClickedKey(key) {
       break;
 
     case '⇤':
+    case 'Backspace':
       handleClearOne();
       break;
 
@@ -94,4 +96,8 @@ function handleClickedKey(key) {
 // Events
 keys.forEach((key) => {
   key.addEventListener('click', () => handleClickedKey(key.textContent));
+});
+document.addEventListener('keyup', (event) => {
+  if (REGEX_INVALID_CONTENT_KEYBOARD.test(event.key)) return;
+  handleClickedKey(event.key);
 });
