@@ -10,16 +10,16 @@ const REGEX_INVALID_CONTENT = /[^\.\+\-\*\/\d]/;
 let allowPoint = true;
 
 // Functions
-function validateKey(key, content) {
+function validateKey(key) {
   // If there is no content, first character must be
   // a number or a plus/minus symbol.
-  if (!content) {
+  if (!display.textContent) {
     return REGEX_NUMBERS.test(key) || /[\.+-]/.test(key);
   }
 
-  const lastCharacter = content[content.length - 1];
-
   if (key === '.') return allowPoint;
+
+  const [lastCharacter] = getLastCharacter();
 
   // If key is a symbol, next character must be a number.
   if (REGEX_SYMBOLS.test(lastCharacter)) {
@@ -37,8 +37,21 @@ function handleEqual() {
   display.textContent = result;
 }
 
-function handleClear() {
+function handleClearAll() {
   display.textContent = '';
+}
+
+function handleClearOne() {
+  const [lastCharacter, index] = getLastCharacter();
+  if (lastCharacter === '.') allowPoint = true;
+  display.textContent = display.textContent.slice(0, index);
+}
+
+function getLastCharacter() {
+  const lastCharacterIndex = display.textContent.length - 1;
+  const lastCharacter = display.textContent[lastCharacterIndex];
+
+  return [lastCharacter, lastCharacterIndex];
 }
 
 function handleClickedKey(key) {
@@ -48,18 +61,20 @@ function handleClickedKey(key) {
       break;
 
     case 'C':
-      handleClear();
+      handleClearAll();
+      break;
+
+    case '⇤':
+      handleClearOne();
       break;
 
     default:
-      if (!validateKey(key, display.textContent)) break;
+      if (!validateKey(key)) break;
 
       if (key === '.') {
         allowPoint = false;
 
-        const lastCharacter = display.textContent
-          ? display.textContent[display.textContent.length - 1]
-          : null;
+        const [lastCharacter] = display.textContent ? getLastCharacter() : [null];
 
         if (!REGEX_NUMBERS.test(lastCharacter)) {
           display.textContent += '0';

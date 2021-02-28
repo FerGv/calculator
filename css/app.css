@@ -69,43 +69,50 @@ body {
   font-weight: bolder;
 }
 
-.calculator__symbol--clear {
+.calculator__symbol--clear-all {
   background-color: var(--symbol-color);
   color: white;
   grid-column: 4;
   grid-row: 2;
 }
 
-.calculator__symbol--sum {
+.calculator__symbol--clear-one {
+  background-color: var(--symbol-color);
+  color: white;
   grid-column: 4;
   grid-row: 3;
 }
 
-.calculator__symbol--subtract {
+.calculator__symbol--sum {
   grid-column: 4;
   grid-row: 4;
 }
 
-.calculator__symbol--multiplication {
+.calculator__symbol--subtract {
   grid-column: 4;
   grid-row: 5;
 }
 
-.calculator__symbol--division {
+.calculator__symbol--multiplication {
   grid-column: 3;
   grid-row: 5;
 }
 
-.calculator__symbol--dot {
+.calculator__symbol--division {
   grid-column: 2;
   grid-row: 5;
+}
+
+.calculator__symbol--dot {
+  grid-column: 1;
+  grid-row: 6;
 }
 
 .calculator__symbol--equal {
   background-color: var(--symbol-color);
   color: white;
   border-radius: 20px;
-  grid-column: span 4;
+  grid-column: span 3;
 }
 
 /* Transitions */
